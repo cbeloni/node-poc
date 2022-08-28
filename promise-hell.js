@@ -21,9 +21,21 @@ const getNomeCompletoExt = (p) => {
     })
 }
 
+const getIdadeExt = (p, idade) => {
+    return new Promise((resolve, reject) => {
+        console.log("Chamando getNomeCompleto...")
+        p.idade = idade
+        resolve(p)
+    })
+}
 
-Promise.resolve()
-.then(() => getNomeCompleto())
-.then(() => console.log(pessoa))
+const main = () => {
+    Promise.resolve()
+    .then(() => getNomeCompleto())
+    .then(() => console.log(pessoa))
+    .then(() => getNomeCompletoExt(pessoa))
+    .then((result) => console.log(result))
+}
 
-module.export = getNomeCompletoExt
+
+module.exports = { getNomeCompletoExt, getIdadeExt }
